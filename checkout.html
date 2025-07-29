@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>checkout</title>
+        <style>
+            body{
+                background-color: aqua;
+            }
+            h1{
+                text-indent: 43%;
+            }
+            h2{
+                text-indent: 42.5%;
+            }
+            p{
+                color: blue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Checkout page</h1>
+        <h2>Chose your way to pay</h2>
+<form id="paymentForm">
+    <input type="radio" name="payment" value="Credit Card" id="cc">
+    <label for="cc">Credit Card</label><br>
+
+    <input type="radio" name="payment" value="UPI" id="upi">
+    <label for="upi">UPI</label><br>
+
+    <input type="radio" name="payment" value="PayPal" id="paypal">
+    <label for="paypal">PayPal</label><br><br>
+
+    <button type="button" onclick="getPaymentMethod()">Proceed</button>
+</form>
+
+<p id="selectedMethod"></p>
+
+<script>
+    function getPaymentMethod() {
+        const methods = document.getElementsByName("payment");
+        let selected = null;
+
+        for (let method of methods) {
+            if (method.checked) {
+                selected = method.value;
+                break;
+            }
+        }
+
+        document.getElementById("selectedMethod").textContent =
+            selected ? "You selected: " + selected + "      "+"    Your Item will be on your doorstep in a few days" : "Please choose a payment method.";
+    }
+</script>
+    </body>
+</html>
